@@ -44,6 +44,7 @@ import com.hamiliserver.locationsample.Model.PlacesList;
 import com.hamiliserver.locationsample.R;
 import com.hamiliserver.locationsample.SharedPreferences.Places;
 import com.hamiliserver.locationsample.Splash.SplashActivity;
+import com.hamiliserver.locationsample.UploadImageFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,7 +69,7 @@ public class DashboardActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        lblUserName = findViewById(R.id.lblUserName);
+        //lblUserName = findViewById(R.id.lblUserName);
 
         getPlaces = new Runnable() {
             @Override
@@ -177,7 +178,17 @@ public class DashboardActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+
+            UploadImageFragment uploadImageFragment = new UploadImageFragment();
+
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+            fragmentTransaction.replace(R.id.fragment_dashboard, uploadImageFragment);
+
+            fragmentTransaction.commit();
+
+
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -334,7 +345,7 @@ public class DashboardActivity extends AppCompatActivity
     @Override
     public void updateUser(String userName) {
 
-        lblUserName.setText("Hi. Your name is:\n" + userName);
+        //lblUserName.setText("Hi. Your name is:\n" + userName);
 
     }
 
